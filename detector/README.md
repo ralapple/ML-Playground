@@ -1,0 +1,2 @@
+# Notes about this project
+

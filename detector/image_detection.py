@@ -23,3 +23,19 @@ class AirplaneDetector:
 
     def load(self):
         pass
+
+
+
+
+def preprocess_image(image):
+    '''
+    Preprocesses the image to be used by the model, this includes normalizing the values of the image and applying
+    filters to make the changes more drastic.
+    '''
+    pass
+
+def convert_image(image):
+    '''
+    converts the image to useable format for the model
+    '''
+    pass
