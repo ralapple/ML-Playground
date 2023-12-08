@@ -11,10 +11,13 @@ from torchvision.models.detection import fasterrcnn_resnet50_fpn
 from torchvision.utils import draw_bounding_boxes
 
 
-"""
-Image detection algorithm using pytorch
-"""
+
 class AirplaneDetector:
+    '''
+    Image detection algorithm using pytorch
+    Identify airplanes in an image
+    Starting using a pretrained model from pytoch vision
+    '''
     def __init__(self, model_path=None, num_classes=91):
 
         # if a model is provided, use that model
@@ -37,15 +40,15 @@ class AirplaneDetector:
         self.model.eval()
         self.transforms = T.Compose([T.ToTensor()])
 
-    def train(self):
+    def train(self) -> None:
         '''
         Training function for the model when creating our own CNN
         '''
         pass
 
-    def predict(self, image_path):
+    def predict(self, image_path) -> None:
         '''
-        Predicts the bounding boxes for the image
+        Predicts the bounding boxes for the image and casts them on the image
         '''
 
         # Preprocess the image using function below
@@ -73,12 +76,6 @@ class AirplaneDetector:
         # Visualize bounding boxes on the image
         image_with_boxes = draw_bounding_boxes(image_array, boxes, labels)
         Image.fromarray(image_with_boxes.mul(255).permute(1, 2, 0).byte().numpy()).show()
-
-    def evaluate(self):
-        pass
-
-
-
 
 def preprocess_image(image_path):
 
