@@ -12,6 +12,8 @@ Working with different machine learning algorithms to practice, learn, and expan
 - K means algorithm
 - Works by assiging the data point to the closest cluster, adjusting the cluster means and repeating until the points have converged
 
-### Image Object Detection - detector folder
-- Goal is to identify the object, bound it by a box, and show the percentage certainty
-- This can be used later as an intermediate process in a larger program
+### ImageDetector
+- Utilizes the Pytorch torchvision framework for image classification
+- Currently working algorithm that can identify what object is in an image
+- Lists the top k classes and their probability
+- Located within the ImageDetection folder
