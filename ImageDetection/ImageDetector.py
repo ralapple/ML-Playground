@@ -1,19 +1,17 @@
 '''
 Created:        November 30th, 2023
-Last Updated:   December 7th, 2023
+Last Updated:   December 19th, 2023
 Testing a simple image detection model, first time using pytorch
 '''
-from PIL import Image
-import numpy as np
+# import numpy as np
 import torch
 
-from torchvision.transforms import v2 as T
 from torchvision.io import read_image
 from torchvision.models import resnet50, ResNet50_Weights
 
 
 
-class AirplaneDetector:
+class ImageDetector:
     '''
     Image detection algorithm using pytorch
     Identify airplanes in an image
@@ -44,6 +42,7 @@ class AirplaneDetector:
         Training function for the model when creating our own CNN
         '''
         pass
+
 
     def predict(self, image_path, num_predictions=5) -> None:
         '''
@@ -85,5 +84,5 @@ if __name__ == "__main__":
 
     # AirplaneDetector(model_path=None).predict('./airplane.png')
 
-    a1 = AirplaneDetector()
-    a1.predict('./a.jpeg')
+    a1 = ImageDetector()
+    a1.predict('./images/a.jpeg')
