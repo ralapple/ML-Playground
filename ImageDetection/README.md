@@ -8,6 +8,11 @@
 ### Currently Working
 - Reads image and determines top k possibilities for the class of the image
 
+##### To Run
+```
+python ImageDetector.py {YOUR IMAGE PATH} {NUMBER OF PREDICTIONS: DEFAULT 5}
+```
+
 ### Next Goals
 - Expantion into highlighting the objects within the image
 - Allowing for training of own weights

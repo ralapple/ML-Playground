@@ -4,6 +4,8 @@ Last Updated:   December 19th, 2023
 Testing a simple image detection model, first time using pytorch
 '''
 # import numpy as np
+import sys
+
 import torch
 
 from torchvision.io import read_image
@@ -18,6 +20,10 @@ class ImageDetector:
     Starting using a pretrained model from pytoch vision
     '''
     def __init__(self, model_path=None):
+        '''
+        Constructor for the ImageDetector class
+        :param model_path: path to the model if there is one set, initialized to ResNet50 for default
+        '''
 
         # if a model is provided, use that model
         if model_path:
@@ -37,9 +43,12 @@ class ImageDetector:
             # sets the model to eval mode
             self.model.eval()
 
+        self.batch = None
+
     def train(self) -> None:
         '''
         Training function for the model when creating our own CNN
+        :return: None
         '''
         pass
 
@@ -47,34 +56,38 @@ class ImageDetector:
     def predict(self, image_path, num_predictions=5) -> None:
         '''
         Predicts the bounding boxes for the image and casts them on the image
+        :param image_path: path to the image
+        :param num_predictions: number of predictions to make
+        :return: None
         '''
-        batch = self.preprocess(image_path)
+        self.preprocess(image_path)
 
-        prediction = self.model(batch).squeeze().softmax(0)
+        prediction = self.model(self.batch).squeeze().softmax(0)
 
+        # top k probabilities, top k indices within the prediction tensor
         topk_probability, topk_indices = torch.topk(prediction, num_predictions)
 
+        # iterate and print the top k predictions 
         for i in range(num_predictions):
             label = topk_indices[i].item()
             score = topk_probability[i].item()
             category = self.weights.meta["categories"][label]
-            print(f'Class: {category} | Probability: {score * 100:.2f}') 
+            print(f'Class: {category} | Probability: {score * 100:.2f}')
 
 
-    def preprocess(self, image_path):
+    def preprocess(self, image_path) -> None:
         '''
-        Preprocesses the image
+        Preprocesses the image before the model can make a prediction
+        :param image_path: path to the image
+        :return: None 
         '''
 
         # Open the image
         image = read_image(image_path)
-
         preprocess = self.weights.transforms(antialias=True)
-
         # preprocess the image
         batch = preprocess(image).unsqueeze(0)
-
-        return batch
+        self.batch = batch
 
 
 
@@ -82,7 +95,13 @@ if __name__ == "__main__":
     import ssl
     ssl._create_default_https_context = ssl._create_unverified_context
 
-    # AirplaneDetector(model_path=None).predict('./airplane.png')
+    num_predictions = 5 # default number of predictions
 
-    a1 = ImageDetector()
-    a1.predict('./images/a.jpeg')
+    if len(sys.argv) == 2:
+        img = str(sys.argv[1])
+    if len(sys.argv) == 3:
+        img = str(sys.argv[1])
+        num_predictions = int(sys.argv[2])
+
+    Detector = ImageDetector()
+    Detector.predict(img, num_predictions)
