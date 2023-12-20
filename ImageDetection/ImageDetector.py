@@ -5,6 +5,7 @@ Testing a simple image detection model, first time using pytorch
 '''
 # import numpy as np
 import sys
+import time
 
 import torch
 
@@ -60,6 +61,7 @@ class ImageDetector:
         :param num_predictions: number of predictions to make
         :return: None
         '''
+        start_time = time.time()
         self.preprocess(image_path)
 
         prediction = self.model(self.batch).squeeze().softmax(0)
@@ -73,6 +75,8 @@ class ImageDetector:
             score = topk_probability[i].item()
             category = self.weights.meta["categories"][label]
             print(f'Class: {category} | Probability: {score * 100:.2f}')
+
+        print(f'Prediction time: {time.time() - start_time:.2f} seconds')
 
 
     def preprocess(self, image_path) -> None:
