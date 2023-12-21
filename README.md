@@ -1,4 +1,4 @@
-# ML-Training
+# ML-Playground
 This repo acts as a dynamic portfolio for my experiences with machine learning, and AI throughout my studies.
 
 Working with different machine learning algorithms to practice, learn, and expand understanding. These algorithms are intended to be used as intermediate processes within larger systems.
