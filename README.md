@@ -14,6 +14,7 @@ Working with different machine learning algorithms to practice, learn, and expan
 
 ### ImageDetector
 - Utilizes the Pytorch torchvision framework for image classification
+- Working algorithm for object detection also within the ImageDetector folder
 - Currently working algorithm that can identify what object is in an image
 - Lists the top k classes and their probability
 - Located within the ImageDetection folder
