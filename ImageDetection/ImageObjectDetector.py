@@ -53,7 +53,7 @@ class ImageObjectDetector:
         labels = [self.weights.meta["categories"][i] for i in prediction["labels"]]
 
         # Edit the tensor to have the boxes and labels around the objects
-        box = draw_bounding_boxes(read_image(image_path), prediction["boxes"], labels=labels, colors="red", width=2, font_size=30)
+        box = draw_bounding_boxes(read_image(image_path), prediction["boxes"], labels=labels, colors="red", width=2)
 
         # Convert the tensor back to an image and display
         new_image = to_pil_image(box)

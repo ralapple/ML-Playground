@@ -18,3 +18,6 @@ python ImageDetector.py {YOUR IMAGE PATH} {NUMBER OF PREDICTIONS: DEFAULT 5}
 - Allowing for training of own weights
 - decreasing coupling between components of the class
 
+# Image Object Detector
+- Reads in an image similar to the Image Detection
+- Outlines the objects and their label within the image
