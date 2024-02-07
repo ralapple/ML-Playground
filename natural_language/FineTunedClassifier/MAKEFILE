@@ -1,0 +1,4 @@
+depend:
+	@pip install transformers datasets evaluate scikit-learn
+	@pip install accelerate -U
+	@pip install wandb
