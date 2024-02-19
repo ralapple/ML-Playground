@@ -1,0 +1,7 @@
+depend:
+    pip install transformers
+    pip install nltk==3.6.1
+
+depend3:
+    pip3 install transformers
+    pip3 install nltk==3.6.1
