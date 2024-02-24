@@ -3,3 +3,5 @@
 .idea
 /.idea
 .DS_Store
+*.txt
+/ngram/ngram_authorship_train/
