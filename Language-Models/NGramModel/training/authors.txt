@@ -1,0 +1,4 @@
+./training/austen_utf8.txt
+./training/dickens_utf8.txt
+./training/tolstoy_utf8.txt
+./training/wilde_utf8.txt
